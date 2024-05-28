@@ -39,7 +39,7 @@ export default function Usdt() {
     event.preventDefault();
     if (data && data.conversion_rates) {
       const conversionRate = data.conversion_rates[selectedCurrency];
-      const convertedAmount = amount * conversionRate + 12;
+      const convertedAmount = amount * conversionRate + 14;
       setConvertedAmount(convertedAmount.toFixed(2));
     }
   };
