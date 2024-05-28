@@ -8,7 +8,7 @@ export default function Usdt() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState(1);
-  const [selectedCurrency, setSelectedCurrency] = useState('EUR');
+  const [selectedCurrency, setSelectedCurrency] = useState('NGN');
   const [convertedAmount, setConvertedAmount] = useState(null);
 
   useEffect(() => {
@@ -90,11 +90,16 @@ export default function Usdt() {
               required
               className='text-black py-2 px-3 rounded-lg'
             >
-              {Object.keys(data.conversion_rates).map((currency) => (
-                <option value={currency} key={currency}>
-                  {currency}
-                </option>
-              ))}
+             {Object.keys(data.conversion_rates).map((currency) => {
+    if (currency === 'NGN') {
+      return (
+        <option value={currency} key={currency}>
+          {currency}
+        </option>
+      );
+    }
+    return null;
+  })}
             </select>
             <button type="submit" className='xl:w-1/3 w-1/2 py-2 rounded-lg bg-green-600'>Convert</button>
           </form>
